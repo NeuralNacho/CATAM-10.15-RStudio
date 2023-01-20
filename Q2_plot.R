@@ -1,6 +1,6 @@
 source('Q2_compute_error.R')
 
-Q2_plot <- function() {
+generate_plot <- function() {
   p <- 10
   training_RSS <- rep(0, p)
   test_RSS <- rep(0, p)
@@ -16,10 +16,9 @@ Q2_plot <- function() {
   training_RSS <- training_RSS / 100
   test_RSS <- test_RSS / 100
   
-  j <- c(1:10)
-  print(training_RSS)
+  j <- 1:10
   
-  plot(training_RSS)
+  plot()
   #     main = 'RSS against Model Size',
    #    xlab = 'j', ylab = 'RSS',
     #   col = 'blue')
