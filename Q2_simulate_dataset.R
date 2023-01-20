@@ -2,7 +2,7 @@
 
 library(MASS)
 
-simulate_data <- function(N) {
+simulate_dataset <- function(N) {
   sigma_sq <- 1
   p <- 10
   beta = c(-0.5, 0.45, -0.4, 0.35, -0.3, 
@@ -12,5 +12,5 @@ simulate_data <- function(N) {
   X_matrix <- mvrnorm(N, rep(0, p), diag(p))
   Y_vec <- X_matrix %*% beta + epsilon_vec
   
-  return(Y_vec)
+  return(list(X_matrix, Y_vec))
 }
