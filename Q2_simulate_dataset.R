@@ -1,4 +1,4 @@
-# Personal access token: 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
+# PAT: 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
 
 library(MASS)
 
@@ -12,5 +12,6 @@ simulate_dataset <- function(N) {
   X_matrix <- mvrnorm(N, rep(0, p), diag(p))
   Y_vec <- X_matrix %*% beta + epsilon_vec
   
-  return(list(X_matrix, Y_vec))
+  return(list(Y_vec, X_matrix))
 }
+
