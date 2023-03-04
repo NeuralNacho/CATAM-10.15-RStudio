@@ -37,8 +37,7 @@ bestsubset <- function(T) {
     # Finding optimal beta:
     for (M in search_space_j) {
       X_M <- X[, M]
-      beta_M <- (solve(t(X_M) %*% X_M) 
-                 %*% t(X_M) %*% Y)
+      beta_M <- solve(t(X_M) %*% X_M, t(X_M) %*% Y)
       RSS <- t(Y - X_M %*% beta_M) %*% 
               (Y - X_M %*% beta_M)
       if (RSS < min_RSS) {
@@ -61,4 +60,13 @@ bestsubset <- function(T) {
   }
   return(B)
 }
+
+# Code to run (in terminal) for example output:
+# source('Q2_simulate_dataset.R')
+# source('Q3_bestsubset.R')
+# T <- simulate_dataset(10)
+# B <- bestsubset(T)
+# View(B)
+
+
 

@@ -1,7 +1,11 @@
-greedysubset <- function(T) {
+# This will be the amended version of Q4_greedysubset.R
+# as specified by the question
+
+Q5_greedysubset <- function(T) {
   Y <- T[[1]]
   X <- T[[2]]
   p <- ncol(X)
+  N <- nrow(X)
   
   B <- matrix(nrow = p, ncol = 0)
   prev_model <- c()
@@ -15,7 +19,6 @@ greedysubset <- function(T) {
       }
     }
     
-    # Same code as Q3_bestsubset.R :
     min_RSS <- Inf
     best_beta_M <- c()  # Empty vector for now
     best_M <- c()
@@ -31,6 +34,18 @@ greedysubset <- function(T) {
         min_RSS <- RSS
       }
     }
+    # F-test added here:
+    if (j >= 2) { # Cannot do F-test when j = 1
+      F_quantile <- qf(0.95, 1, N - j - 1)
+      test_stat <- (prev_min_RSS - min_RSS) / (min_RSS / (N - j - 1))
+      print(paste('test stat', test_stat))
+      print(paste('F quantile', F_quantile))
+      if (test_stat < F_quantile) { 
+        # < ! because if this is the case then d+1 is not
+        # significant improvement
+        break # escapes loop for (j in 1:p)
+      }
+    } 
     
     new_col <- rep(0, p)
     beta_index = 1
@@ -41,15 +56,16 @@ greedysubset <- function(T) {
     B <- cbind(B, new_col)
     
     prev_model <- best_M  # Update best M for loop
+    prev_min_RSS <- min_RSS # Store for F-test
   }
   return(B)
 }
 
 # Code to run (in terminal) for example output:
 # source('Q2_simulate_dataset.R')
-# source('Q4_greedysubset.R')
-# T <- simulate_dataset(10)
-# B <- greedysubset(T)
+# source('Q5_greedysubset.R')
+# T <- simulate_dataset(60) 
+# (For larger N can be more certain about components of beta)
+# B <- Q5_greedysubset(T)
 # View(B)
-
 
