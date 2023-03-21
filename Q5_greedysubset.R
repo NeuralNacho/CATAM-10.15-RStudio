@@ -38,8 +38,6 @@ Q5_greedysubset <- function(T) {
     if (j >= 2) { # Cannot do F-test when j = 1
       F_quantile <- qf(0.95, 1, N - j - 1)
       test_stat <- (prev_min_RSS - min_RSS) / (min_RSS / (N - j - 1))
-      print(paste('test stat', test_stat))
-      print(paste('F quantile', F_quantile))
       if (test_stat < F_quantile) { 
         # < ! because if this is the case then d+1 is not
         # significant improvement
