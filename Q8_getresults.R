@@ -79,7 +79,11 @@ Q8_getresults <- function() {
               Q5_greedysubset_test_error, 
               as.numeric(bestsubset_crossval_test_error),
               as.numeric(greedysubset_crossval_test_error),
-              as.numeric(lars_crossval_test_error)))
+              as.numeric(lars_crossval_test_error),
+              Q5_greedysubset_output[,i], # These last four are for Q8_displaycount
+              bestsubset_crossval,
+              greedysubset_crossval,
+              lars_crossval))
 }
 
 
