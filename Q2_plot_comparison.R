@@ -33,7 +33,8 @@ plot_comparison <- function() {
        ylim = c(-0.3, 0))
   #ticks = c(-0.3, -0.2, -0.1, 0)
   #axis(side = 2, at = ticks)
-  #lines(j, test_RSS_diff, # Don't actually want test RSS for this graph
+  #lines(j, test_RSS_diff, 
+         # Don't actually want test RSS for this graph
   #      type = 'b',
   #      col = 'red')
   lines(j, -17 * j / 600,

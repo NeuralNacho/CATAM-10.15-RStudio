@@ -1,4 +1,4 @@
-# This file will count the numnber of times the four
+# This file will count the number of times the four
 # random variables are included in the model
 source('Q8_getresults.R')
 
@@ -7,14 +7,15 @@ Q8_displaycount <- function() {
   bestsubset_count <- c()
   greedy_count <- c()
   lars_count <- c()
-  # vector for number of zeros in last 4 entries for each trial run
+  # vector for number of zeros in last 4 entries for each trial
   
   Q5_greedy_tally <- numeric(12)
-  # ^ counts number of times each variable is included in a run of Q5_greedy
+  # ^ counts number of times each variable is included in a 
+  # run of Q5_greedy
   Q5_greedy_values <- numeric(12)
   # adds all the Q5_greedy vectors together 
   
-  for (i in 1:100) {
+  for (i in 1:10) {
     print(i)
     errors <- Q8_getresults()
     Q5_greedy <- errors[[7]]
@@ -27,10 +28,13 @@ Q8_displaycount <- function() {
     
 
     Q5_greedy_count[i] <- length(which(Q5_greedy[9:12] != 0))
-    bestsubset_count[i] <- length(which(bestsubset_crossval[9:12] != 0))
-    greedy_count[i] <- length(which(greedysubset_crossval[9:12] != 0))
+    bestsubset_count[i] <- length(which(
+                            bestsubset_crossval[9:12] != 0))
+    greedy_count[i] <- length(which(
+                            greedysubset_crossval[9:12] != 0))
     lars_count[i] <- length(which(lars_crossval[9:12] != 0))
-    # ^ counts number of non-zero elements in last four components
+    # ^ counts number of non-zero elements in last four 
+    # components
 
     # cat(Q5_greedy, '\n')
     # cat(bestsubset_crossval, '\n')

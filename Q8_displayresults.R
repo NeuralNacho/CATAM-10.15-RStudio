@@ -10,8 +10,8 @@ Q8_displayresults <- function() {
     print(i)
     errors <- Q8_getresults()
     # All of the test data RSS in a list
-    bestsubset_error <- errors[[1]]  # USELESS BIASED
-    greedysubset_error <- errors[[2]]  # USELESS BIASED
+    bestsubset_error <- errors[[1]]  # Unused (not useful)
+    greedysubset_error <- errors[[2]]  # Unused (not useful)
     Q5_greedysubset_error <- errors[[3]]
     bestsubset_cv_error[i] <- errors[[4]]
     greedysubset_cv_error[i] <- errors[[5]]

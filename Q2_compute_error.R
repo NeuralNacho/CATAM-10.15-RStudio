@@ -23,8 +23,8 @@ compute_error <- function(N_tr = 30) {
     beta_M <- c(beta_M, integer(p - j))
     # integer(p - j) is p-j length vector of 0's
     training_RSS <- c(training_RSS, 
-                      t(Y_training - X_training %*% beta_M) %*% 
-                      (Y_training - X_training %*% beta_M) / N_tr)
+                    t(Y_training - X_training %*% beta_M) %*% 
+                    (Y_training - X_training %*% beta_M) / N_tr)
     test_RSS <- c(test_RSS, 
                   t(Y_test - X_test %*% beta_M) %*% 
                   (Y_test - X_test %*% beta_M) / N_te)

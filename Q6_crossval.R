@@ -1,5 +1,5 @@
 crossval <- function(T, sparse_estimator) {
-  # sparse_estimator is a function. e.g. bestsubset or greedysubset
+# sparse_estimator is a function. e.g. bestsubset or greedysubset
   Y <- T[[1]]
   X <- T[[2]]
   p <- ncol(X)
@@ -11,16 +11,16 @@ crossval <- function(T, sparse_estimator) {
   random_permutation <- sample(c(1:N), N)
   n <- 1
   for (k in 1:10) {
-    Y_fold <- c()  # This is the y vector we add for the new fold
+    Y_fold <- c()  # This is the y vector added to the new fold
     X_fold <- matrix(nrow = 0, ncol = p)
     Y_complement <- Y # This will be the complement of Y_fold
     X_complement <- X
-    entries_to_remove <- c() # Will use this to make Y_complement
+    entries_to_remove <- c() # Will use to make Y_complement
     while (n <= k * N / 10) {
       pi_n <- random_permutation[n]
       entries_to_remove <- append(entries_to_remove, pi_n)
       y_perm <- Y[pi_n]
-      x_perm <- X[pi_n, ] # accesses row of X
+      x_perm <- X[pi_n, ] # Accesses row of X
       Y_fold <- append(Y_fold, y_perm)
       X_fold <- rbind(X_fold, x_perm)
       n <- n + 1
@@ -69,9 +69,10 @@ crossval <- function(T, sparse_estimator) {
   B <- sparse_estimator(T)
   # B matrix on entire data set
   beta_cv <- B[, j_star]
-  # Assume question means to find beta_cv using the sparse estimator
+  # Assume question means to find beta_cv using sparse estimator
   # still considering that's what was used to find j*
   # Otherwise use best_subset just for subsets of size j.
+  # (Confirmed by CATAM help email)
   
   return(beta_cv)
 }
